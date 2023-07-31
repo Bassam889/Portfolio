@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon";
+---
+
+<Layout>
+  <section
+    class="bg-black w-auto h-screen text-white font-oswald text-lg font-light">
+    <div class="grid place-items-center pt-20">
+      <div>
+        <h1 class="font-bold text-3xl">Skills</h1>
+        <h2 class="font-normal text-xl">DEVELOPMENT ARSENAL</h2>
+        <br />
+        <div class="flex gap-5">
+          <div class="w-64 h-85 border-white border-solid border-2 rounded">
+            <div
+              class="bg-white w-63 h-16 flex flex-col justify-center items-center">
+              <Icon name="mdi:language-html5" class="text-black h-9 w-9" />
+              <h1 class="text-black text-center font-bold font-oswald">
+                Front End
+              </h1>
+            </div>
+            <div
+              class="flex flex-col justify-center items-center font-normal py-2">
+              <h1>HTML</h1>
+              <h1>CSS</h1>
+              <h1>JS</h1>
+              <h1>SaSS</h1>
+              <h1>Tailwind CSS</h1>
+              <h1>Vue.js</h1>
+              <h1>Nuxt.js</h1>
+              <h1>Svelte</h1>
+              <h1>Svelte KIT</h1>
+              <h1>Astro</h1>
+            </div>
+          </div>
+          <div class="w-64 h-85 border-white border-solid border-2 rounded">
+            <div
+              class="bg-white w-63 h-16 flex flex-col justify-center items-center">
+              <Icon name="mdi:xml" class="text-black h-9 w-9" />
+              <h1 class="text-black text-center font-bold font-oswald">
+                Back End
+              </h1>
+            </div>
+            <div
+              class="flex flex-col justify-center items-center font-normal py-2">
+              <h1>C#</h1>
+              <h1>Go</h1>
+              <h1>Asp.NET Core Web API</h1>
+              <h1>PostgreSQL</h1>
+              <h1>MongoDB</h1>
+              <h1>RESTFUL API'S</h1>
+              <h1>GraphQL</h1>
+              <h1>Nginx</h1>
+            </div>
+          </div>
+          <div class="w-64 h-85 border-white border-solid border-2 rounded">
+            <div
+              class="bg-white w-63 h-16 flex flex-col justify-center items-center">
+              <Icon name="mdi:tools" class="text-black h-9 w-9" />
+              <h1 class="text-black text-center font-bold font-oswald">
+                Other
+              </h1>
+            </div>
+            <div
+              class="flex flex-col justify-center items-center font-normal py-2">
+              <h1>Git</h1>
+              <h1>GitHub</h1>
+              <h1>Netlify</h1>
+              <h1>Azure</h1>
+              <h1>TS</h1>
+              <h1>Jest</h1>
+              <h1>Vitest</h1>
+              <h1>Cypress</h1>
+              <h1>Rust</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

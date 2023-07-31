@@ -1,0 +1,483 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon";
+---
+
+<Layout>
+  <section class="bg-black w-auto h-auto text-white font-oswald">
+    <div class="grid place-items-center py-10">
+      <div>
+        <h1 class="font-bold text-3xl mb-2">Contact me</h1>
+        <div
+          class="w-full h-full border-white border-solid border-2 rounded py-5">
+          <form class="form" method="POST" id="contactForm">
+            <div class="font-oswald flex flex-row gap-x-5 px-7">
+              <div class="form-control">
+                <label for="firstName">First Name</label>
+                <br />
+                <input
+                  type="text"
+                  placeholder="First"
+                  class="rounded w-64 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  id="firstName"
+                  name="firstName"
+                />
+                <div class="flex pt-1">
+                  <i class="exclamation list-none text-red-500">
+                    <Icon name="mdi:exclamation" class="h=5 w-5" />
+                  </i>
+                  <small class="text-red-500">Error message</small>
+                </div>
+              </div>
+              <div class="form-control">
+                <label for="lastName">Last Name</label>
+                <br />
+                <input
+                  type="text"
+                  placeholder="Last"
+                  class="rounded border-0 w-64 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  id="lastName"
+                  name="lastName"
+                />
+                <div class="flex pt-1">
+                  <i class="exclamation list-none text-red-500">
+                    <Icon name="mdi:exclamation" class="h=5 w-5" />
+                  </i>
+                  <small class="text-red-500">Error message</small>
+                </div>
+              </div>
+            </div>
+            <div class="font-oswald flex flex-col gap-y-3 px-7 pt-2">
+              <div class="form-control">
+                <label for="email">Email</label>
+                <br />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  class="rounded border-0 w-105.4 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  id="email"
+                  name="email"
+                />
+                <div class="flex pt-1">
+                  <i class="exclamation list-none text-red-500">
+                    <Icon name="mdi:exclamation" class="h=5 w-5" />
+                  </i>
+                  <small class="text-red-500">Error message</small>
+                </div>
+              </div>
+              <div class="form-control">
+                <label for="phone">Phone</label>
+                <br />
+                <input
+                  type="tel"
+                  placeholder="Phone"
+                  class="rounded border-0 w-105.4 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  id="phone"
+                  name="phone"
+                />
+                <div class="flex pt-1">
+                  <i class="exclamation list-none text-red-500">
+                    <Icon name="mdi:exclamation" class="h=5 w-5" />
+                  </i>
+                  <small class="text-red-500">Error message</small>
+                </div>
+              </div>
+              <div class="form-control">
+                <label for="message">Message</label>
+                <br />
+                <textarea
+                  class="rounded border-0 w-105.4 pl-2 mt-2 pt-0.5 pb-4 text-black border-red-500 border-solid"
+                  placeholder="Provide your inquiry or feedback"
+                  id="message"
+                  name="message"></textarea>
+                <div class="flex pt1">
+                  <i class="exclamation list-none text-red-500">
+                    <Icon name="mdi:exclamation" class="h=5 w-5" />
+                  </i>
+                  <small class="text-red-500">Error message</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <button
+                  class="bg-red-500 border-red-500 border-solid border-2 px-10 py-1 text-white font-normal text-lg rounded"
+                  >Submit</button
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="popup hidden" id="popup">
+    <div class="grid place-items-center py-10">
+      <div id="successMessage">
+        <p class="text-green-500 font-semibold text-2xl">
+          Data sent successfully
+        </p>
+      </div>
+      <br />
+      <div class="success-checkmark">
+        <div class="check-icon">
+          <span class="icon-line line-tip"></span>
+          <span class="icon-line line-long"></span>
+          <div class="icon-circle"></div>
+          <div class="icon-fix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function isEmail(email: string) {
+    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+    );
+  }
+
+  const form = document.getElementById("contactForm") as HTMLFormElement;
+  const firstName = document.getElementById("firstName") as HTMLInputElement;
+  const lastName = document.getElementById("lastName") as HTMLInputElement;
+  const email = document.getElementById("email") as HTMLInputElement;
+  const phone = document.getElementById("phone") as HTMLInputElement;
+  const message = document.getElementById("message") as HTMLTextAreaElement;
+  const successMessage = document.getElementById(
+    "successMessage"
+  ) as HTMLDivElement;
+  const popup = document.getElementById("popup") as HTMLDivElement;
+
+  function checkInputs() {
+    let firstNameValue = firstName.value.trim();
+    let lastNameValue = lastName.value.trim();
+    let emailValue = email.value.trim();
+    let phoneValue = phone.value.trim();
+    let messageValue = message.value.trim();
+
+    if (
+      firstNameValue &&
+      lastNameValue &&
+      emailValue &&
+      phoneValue &&
+      messageValue
+    ) {
+      submitForm();
+      successMessage.classList.remove("hidden");
+    }
+
+    if (firstNameValue === "") {
+      setErrorFor(firstName, "First Name cannot be blank");
+    } else {
+      removeError(firstName);
+    }
+
+    if (lastNameValue === "") {
+      setErrorFor(lastName, "Last Name cannot be blank");
+    } else {
+      removeError(lastName);
+    }
+
+    if (emailValue === "") {
+      setErrorFor(email, "Email cannot be blank");
+    } else if (!isEmail(emailValue)) {
+      setErrorFor(email, "Email is not valid");
+    } else {
+      removeError(email);
+    }
+
+    if (phoneValue === "") {
+      setErrorFor(phone, "Phone cannot be blank");
+    } else {
+      removeError(phone);
+    }
+
+    if (messageValue === "") {
+      setErrorFor(message, "Please leave your message");
+    } else {
+      removeError(message);
+    }
+  }
+
+  function setErrorFor(
+    input: HTMLInputElement | HTMLTextAreaElement,
+    message: string
+  ) {
+    const formControl = input.parentElement;
+    const small = formControl?.querySelector("small");
+
+    if (small) {
+      small.textContent = message;
+    }
+
+    input.classList.add("border-2");
+
+    if (formControl) {
+      formControl.className = "form-control error";
+    }
+  }
+
+  function removeError(input: HTMLInputElement | HTMLTextAreaElement) {
+    const formControl = input.parentElement;
+    const small = formControl?.querySelector("small");
+    const icon = formControl?.querySelector("i.exclamation");
+
+    if (small) {
+      small.textContent = "";
+    }
+
+    input.classList.remove("border-2");
+
+    if (formControl) {
+      formControl.className = "form-control";
+    }
+
+    if (icon) {
+      (icon as HTMLElement).style.visibility = "hidden";
+    }
+  }
+
+  function showPopup() {
+    popup.style.display = "flex";
+  }
+
+  function hidePopup() {
+    popup.style.display = "none";
+  }
+
+  const submitForm = async (): Promise<void> => {
+    try {
+      const formData = new FormData(form);
+
+      // Convert the FormData object to a JSON object
+      const data: { [key: string]: string } = {};
+      formData.forEach((value, key) => {
+        data[key] = value.toString(); // Make sure the value is converted to a string
+      });
+
+      const response = await fetch("http://localhost:5000/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data), // Send form data as JSON
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData);
+        console.log(responseData.message);
+        showPopup();
+        setTimeout(hidePopup, 5000);
+      } else {
+        console.log("Form submission failed.");
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
+    }
+  };
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    checkInputs();
+  });
+</script>
+
+<style>
+  .form-control.error input,
+  textarea {
+    border-color: #e74c3c;
+  }
+
+  .form-control.error i.exclamation {
+    color: #e74c3c;
+    visibility: visible;
+  }
+
+  .form-control i {
+    visibility: hidden;
+  }
+
+  .form-control small {
+    visibility: hidden;
+  }
+
+  .form-control.error small {
+    color: #e74c3c;
+    visibility: visible;
+  }
+
+  .popup.hidden {
+    display: none;
+  }
+
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .popup .success-checkmark {
+    width: 80px;
+    height: 115px;
+    margin: 0 auto;
+  }
+
+  .popup .success-checkmark .check-icon {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 4px solid #4caf50;
+  }
+
+  .popup .success-checkmark .check-icon::before {
+    top: 3px;
+    left: -2px;
+    width: 30px;
+    transform-origin: 100% 50%;
+    border-radius: 100px 0 0 100px;
+  }
+
+  .popup .success-checkmark .check-icon::after {
+    top: 0;
+    left: 30px;
+    width: 60px;
+    transform-origin: 0 50%;
+    border-radius: 0 100px 100px 0;
+    animation: rotate-circle 4.25s ease-in;
+  }
+
+  .popup .success-checkmark .check-icon::before,
+  .popup .success-checkmark .check-icon::after {
+    content: "";
+    height: 100px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    transform: rotate(-45deg);
+  }
+
+  .popup .success-checkmark .check-icon .icon-line {
+    height: 5px;
+    background-color: #4caf50;
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .popup .success-checkmark .check-icon .icon-line.line-tip {
+    top: 46px;
+    left: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+    animation: icon-line-tip 0.75s;
+  }
+
+  .popup .success-checkmark .check-icon .icon-line.line-long {
+    top: 38px;
+    right: 8px;
+    width: 47px;
+    transform: rotate(-45deg);
+    animation: icon-line-long 0.75s;
+  }
+
+  .popup .success-checkmark .check-icon .icon-circle {
+    top: -4px;
+    left: -4px;
+    z-index: 10;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    box-sizing: content-box;
+    border: 4px solid rgba(76, 175, 80, 0.5);
+  }
+
+  .popup .success-checkmark .check-icon .icon-fix {
+    top: 8px;
+    width: 5px;
+    left: 26px;
+    z-index: 1;
+    height: 85px;
+    position: absolute;
+    transform: rotate(-45deg);
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  @keyframes rotate-circle {
+    0% {
+      transform: rotate(-45deg);
+    }
+    5% {
+      transform: rotate(-45deg);
+    }
+    12% {
+      transform: rotate(-405deg);
+    }
+    100% {
+      transform: rotate(-405deg);
+    }
+  }
+
+  @keyframes icon-line-tip {
+    0% {
+      width: 0;
+      left: 1px;
+      top: 19px;
+    }
+    54% {
+      width: 0;
+      left: 1px;
+      top: 19px;
+    }
+    70% {
+      width: 50px;
+      left: -8px;
+      top: 37px;
+    }
+    84% {
+      width: 17px;
+      left: 21px;
+      top: 48px;
+    }
+    100% {
+      width: 25px;
+      left: 14px;
+      top: 45px;
+    }
+  }
+
+  @keyframes icon-line-long {
+    0% {
+      width: 0;
+      right: 46px;
+      top: 54px;
+    }
+    65% {
+      width: 0;
+      right: 46px;
+      top: 54px;
+    }
+    84% {
+      width: 55px;
+      right: 0px;
+      top: 35px;
+    }
+    100% {
+      width: 47px;
+      right: 8px;
+      top: 38px;
+    }
+  }
+</style>

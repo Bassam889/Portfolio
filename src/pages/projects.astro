@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon";
+---
+
+<Layout>
+  <section class="bg-black w-auto h-screen text-white font-oswald">
+    <div class="grid place-items-center pt-20">
+      <div>
+        <h1 class="font-bold text-3xl mb-2">Projects</h1>
+        <p class="font-light w-105">
+          I have several projects I have worked on for myself from a long time.
+          These have taught me many lessons that I carry with me at anytime I’m
+          working on something new. Truly a good journey experience.
+        </p>
+        <br />
+        <div class="flex gap-5">
+          <div class="w-85 h-85 border-white border-solid border-2 rounded">
+            <div class="mt-3 mx-5">
+              <h1 class="underline">Adonis Work Flow</h1>
+              <div
+                class="flex flex-col justify-center items-center font-normal py-2 w-72">
+                <p class="font-light">
+                  This web app consists in you setting your work, but not only
+                  that, you can add deadlines to your task, the calendar section
+                  will help you remind of the events you need to attend, and
+                  lastly a progress section to you show the consistency and
+                  quality of achieving your goals.
+                </p>
+                <br />
+                <span class="font-normal">
+                  Tech used: Vue.js, TailwindCSS, Asp.net core web api,
+                  PostgreSQL, JWT
+                </span>
+              </div>
+              <div class="flex gap-5 mt-8">
+                <button
+                  class="border-red-500 border-solid border-2 px-10 py-1 text-red-500 font-normal"
+                  ><a href="">See Live</a></button
+                >
+                <button
+                  class="bg-red-500 border-red-500 border-solid border-2 px-10 py-1 text-black font-normal"
+                  ><a href="">Source Code</a></button
+                >
+              </div>
+            </div>
+          </div>
+          <div class="w-85 h-85 border-white border-solid border-2 rounded">
+            <div class="mt-3 mx-5">
+              <h1 class="underline">Adonis Library | E-Commerce</h1>
+              <div
+                class="flex flex-col justify-center items-center font-normal py-2 w-72">
+                <p class="font-light">
+                  Adonis Library is an app where it’s main focus is to promote
+                  books of self improvement, you can find books of this kind and
+                  as well publish your own books so anyone can buy and enjoy
+                  your project.
+                </p>
+                <br />
+                <span class="font-normal">
+                  Tech used: Vue.js, TailwindCSS, Asp.net core web api,
+                  PostgreSQL, Auth0, Stripe API, GraphQL
+                </span>
+              </div>
+              <div class="flex gap-5 mt-20">
+                <button
+                  class="border-red-500 border-solid border-2 px-10 py-1 text-red-500 font-normal"
+                  ><a href="">See Live</a></button
+                >
+                <button
+                  class="bg-red-500 border-red-500 border-solid border-2 px-10 py-1 text-black font-normal"
+                  ><a href="">Source Code</a></button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
