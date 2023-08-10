@@ -5,3 +5,17 @@
   margin: 0;
   padding: 0;
 }
+
+/* Add your custom CSS styles here */
+
+/* Hide navigation links on screens below 640px */
+
+@media screen and (max-width: 640px) {
+  .content {
+    transition: padding-top 0.3s ease;
+  }
+
+  .content.separated {
+    padding-top: 120px;
+  }
+}

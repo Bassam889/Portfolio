@@ -6,28 +6,30 @@ import devices from "../assets/images/devices.png";
 ---
 
 <Layout>
-  <section class="bg-black w-auto h-screen text-white font-oswald">
-    <div
-      class="flex justify-center items-center pt-20 gap-28 text-lg font-light">
-      <div>
-        <h1 class="text-3xl font-bold">Leonardo Castillo</h1>
-        <h2 class="text-2xl font-medium">Full Stack Developer</h2>
-        <h4 class="text-lg my-3">Hi there 👋, Thanks for stopping by!</h4>
-        <p class="text-lg font-light w-64">
-          I enjoy programming as much I enjoy life itself, I love creating apps,
-          deploy them and share my work to the public.
-        </p>
+  <section class="bg-black w-auto h-full text-white font-oswald content">
+    <div class="pt-20">
+      <div
+        class="flex lg:flex-row lg:justify-center lg:items-center lg:gap-28 md:flex-row md:gap-12 md:justify-center md:items-center sm:gap-y-10 sm:justify-center sm:items-center sm:flex-col sp:flex-col sp:gap-y-10 sp:justify-center sp:items-center text-lg font-light">
+        <div>
+          <h1 class="text-3xl font-bold">Leonardo Castillo</h1>
+          <h2 class="text-2xl font-medium">Full Stack Developer</h2>
+          <h4 class="text-lg my-3">Hi there 👋, Thanks for stopping by!</h4>
+          <p class="text-lg font-light w-64">
+            I enjoy programming as much I enjoy life itself, I love creating
+            apps, deploy them and share my work to the public.
+          </p>
+        </div>
+        <div>
+          <img
+            src={Leonardo}
+            alt="Leonardo"
+            class="w-72 h-56 border-zinc-50 rounded border-solid border-4"
+          />
+        </div>
       </div>
-      <div>
-        <img
-          src={Leonardo}
-          alt="Leonardo"
-          class="w-72 h-56 border-zinc-50 rounded border-solid border-4"
-        />
+      <div class="flex items-center justify-center mt-16 pb-10 mx-5">
+        <img src={devices} alt="devices" />
       </div>
-    </div>
-    <div class="flex items-center justify-center mt-16">
-      <img src={devices} alt="devices" />
     </div>
   </section>
 </Layout>

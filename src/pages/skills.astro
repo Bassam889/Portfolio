@@ -1,18 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon";
+import "../styles/global.css";
 ---
 
 <Layout>
   <section
-    class="bg-black w-auto h-screen text-white font-oswald text-lg font-light">
-    <div class="grid place-items-center pt-20">
+    class="bg-black w-auto h-full text-white font-oswald text-lg font-light content">
+    <div class="grid place-items-center pt-20 pb-20">
       <div>
         <h1 class="font-bold text-3xl">Skills</h1>
         <h2 class="font-normal text-xl">DEVELOPMENT ARSENAL</h2>
         <br />
-        <div class="flex gap-5">
-          <div class="w-64 h-85 border-white border-solid border-2 rounded">
+        <div
+          class="flex lg:flex-row lg:items-center lg:justify-center md:items-center md:flex-col sm:items-center sm:flex-col sp:items-center sp:flex-col gap-5">
+          <div class="w-64 h-101 border-white border-solid border-2 rounded">
             <div
               class="bg-white w-63 h-16 flex flex-col justify-center items-center">
               <Icon name="mdi:language-html5" class="text-black h-9 w-9" />
@@ -25,8 +27,9 @@ import { Icon } from "astro-icon";
               <h1>HTML</h1>
               <h1>CSS</h1>
               <h1>JS</h1>
-              <h1>SaSS</h1>
+              <h1>Sass</h1>
               <h1>Tailwind CSS</h1>
+              <h1>React</h1>
               <h1>Vue.js</h1>
               <h1>Nuxt.js</h1>
               <h1>Svelte</h1>
@@ -34,7 +37,7 @@ import { Icon } from "astro-icon";
               <h1>Astro</h1>
             </div>
           </div>
-          <div class="w-64 h-85 border-white border-solid border-2 rounded">
+          <div class="w-64 h-101 border-white border-solid border-2 rounded">
             <div
               class="bg-white w-63 h-16 flex flex-col justify-center items-center">
               <Icon name="mdi:xml" class="text-black h-9 w-9" />
@@ -47,6 +50,9 @@ import { Icon } from "astro-icon";
               <h1>C#</h1>
               <h1>Go</h1>
               <h1>Asp.NET Core Web API</h1>
+              <h1>PHP</h1>
+              <h1>Laravel</h1>
+              <h1>Django</h1>
               <h1>PostgreSQL</h1>
               <h1>MongoDB</h1>
               <h1>RESTFUL API'S</h1>
@@ -54,7 +60,7 @@ import { Icon } from "astro-icon";
               <h1>Nginx</h1>
             </div>
           </div>
-          <div class="w-64 h-85 border-white border-solid border-2 rounded">
+          <div class="w-64 h-101 border-white border-solid border-2 rounded">
             <div
               class="bg-white w-63 h-16 flex flex-col justify-center items-center">
               <Icon name="mdi:tools" class="text-black h-9 w-9" />
@@ -73,6 +79,9 @@ import { Icon } from "astro-icon";
               <h1>Vitest</h1>
               <h1>Cypress</h1>
               <h1>Rust</h1>
+              <h1>Twilio</h1>
+              <h1>Stripe</h1>
+              <h1>Auth0</h1>
             </div>
           </div>
         </div>

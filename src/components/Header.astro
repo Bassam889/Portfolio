@@ -1,17 +1,112 @@
+---
+import Icon from "astro-icon";
+---
+
 <header class="bg-black font-oswald text-xl">
   <div class="flex items-center justify-between h-16 mx-4">
     <div>
       <h2 class="text-red-500">Leonardo Castillo</h2>
     </div>
-    <nav>
-      <ul class="text-white flex gap-5 font-normal">
-        <li><a href="/">Home</a></li>
-        <li><a href="/skills">Skills</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="topnav">
+      <nav>
+        <ul>
+          <div class="navigation-list text-white flex gap-5 font-normal">
+            <li><a href="/" class="home">Home</a></li>
+            <li><a href="/skills" class="skills">Skills</a></li>
+            <li><a href="/projects" class="projects">Projects</a></li>
+            <li><a href="/about" class="about">About</a></li>
+            <li><a href="/contact" class="contact">Contact</a></li>
+          </div>
+          <div>
+            <li class="icon">
+              <a class="menuIcon">
+                <Icon name="mdi:menu" class="h-9 w-9 text-white" />
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
-<hr class="bg-white border-0 h-px" />
+<hr class="line-separator bg-white border-0 h-px" />
+
+<style>
+  /* Add your custom CSS styles here */
+
+  /* Hide navigation links on screens below 640px */
+
+  .topnav .menuIcon {
+    display: none;
+  }
+
+  @media screen and (max-width: 640px) {
+    .topnav .home,
+    .skills,
+    .projects,
+    .about,
+    .contact {
+      display: none;
+    }
+
+    .topnav .menuIcon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-top: 18px;
+      padding-right: 20px;
+      cursor: pointer;
+    }
+
+    .topnav.responsive .navigation-list {
+      position: absolute;
+      top: 50px;
+      right: 0px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      padding-right: 25px;
+      gap: 5px;
+      flex-wrap: wrap-reverse;
+      text-align: right;
+      opacity: 1; /* Start with 0 opacity to fade in */
+      transition: opacity 0.3s ease;
+    }
+
+    .topnav.responsive .menuIcon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-top: 18px;
+      padding-right: 20px;
+    }
+
+    .topnav.responsive .navigation-list a {
+      display: block;
+    }
+
+    .line-separator.responsive {
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 37%;
+    }
+  }
+</style>
+
+<script>
+  const icon = document.querySelector(".menuIcon") as HTMLElement;
+  const topnav = document.querySelector(".topnav") as HTMLDivElement;
+  const separator = document.querySelector(".line-separator") as HTMLHRElement;
+  const content = document.querySelector(".content") as HTMLElement;
+
+  icon?.addEventListener("click", () => {
+    topnav.classList.toggle("responsive");
+    separator.classList.toggle("responsive");
+    if (content) {
+      content.classList.toggle("separated");
+    }
+  });
+</script>

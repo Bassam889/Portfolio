@@ -1,24 +1,174 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon";
+import "../styles/global.css";
 ---
 
+<!-- <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script type="text/javascript">
+      function isEmail(email) {
+        return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          email
+        );
+      }
+
+      const form = document.getElementById("contactForm");
+      const firstName = document.getElementById("firstName");
+      const lastName = document.getElementById("lastName");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+      const message = document.getElementById("message");
+      const successMessage = document.getElementById("successMessage");
+      const popup = document.getElementById("popup");
+
+      function checkInputs() {
+        let firstNameValue = firstName.value.trim();
+        let lastNameValue = lastName.value.trim();
+        let emailValue = email.value.trim();
+        let phoneValue = phone.value.trim();
+        let messageValue = message.value.trim();
+
+        if (
+          firstNameValue &&
+          lastNameValue &&
+          emailValue &&
+          phoneValue &&
+          messageValue
+        ) {
+          submitForm();
+          successMessage.classList.remove("hidden");
+        }
+
+        if (firstNameValue === "") {
+          setErrorFor(firstName, "First Name cannot be blank");
+        } else {
+          removeError(firstName);
+        }
+
+        if (lastNameValue === "") {
+          setErrorFor(lastName, "Last Name cannot be blank");
+        } else {
+          removeError(lastName);
+        }
+
+        if (emailValue === "") {
+          setErrorFor(email, "Email cannot be blank");
+        } else if (!isEmail(emailValue)) {
+          setErrorFor(email, "Email is not valid");
+        } else {
+          removeError(email);
+        }
+
+        if (phoneValue === "") {
+          setErrorFor(phone, "Phone cannot be blank");
+        } else {
+          removeError(phone);
+        }
+
+        if (messageValue === "") {
+          setErrorFor(message, "Please leave your message");
+        } else {
+          removeError(message);
+        }
+      }
+
+      function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl?.querySelector("small");
+
+        if (small) {
+          small.textContent = message;
+        }
+
+        input.classList.add("border-2");
+
+        if (formControl) {
+          formControl.className = "form-control error";
+        }
+      }
+
+      function removeError(input) {
+        const formControl = input.parentElement;
+        const small = formControl?.querySelector("small");
+        const icon = formControl?.querySelector("i.exclamation");
+
+        if (small) {
+          small.textContent = "";
+        }
+
+        input.classList.remove("border-2");
+
+        if (formControl) {
+          formControl.className = "form-control";
+        }
+
+        if (icon) {
+          icon.style.visibility = "hidden";
+        }
+      }
+
+      function showPopup() {
+        popup.style.display = "flex";
+      }
+
+      function hidePopup() {
+        popup.style.display = "none";
+      }
+
+      const submitForm = async () => {
+        const formData = new FormData(form);
+
+        let firstName = formData.get("firstName");
+        let lastName = formData.get("lastName");
+        let email = formData.get("email");
+        let phone = formData.get("phone");
+        let message = formData.get("message");
+
+        Email.send({
+          Host: "smtp.gmail.com",
+          To: "leocm889+business@gmail.com",
+          From: "leocm889+business@gmail.com",
+          Subject: "New Information - Portfolio Contact Page",
+          Password: "dsofezjsogywqbhe",
+          Body: `Hello,<br>
+            You have receibed a new contact request with the next information:<br>
+            First Name: ${firstName}<br>
+            Last Name: ${lastName}<br>
+            Phone: ${phone}<br>
+            Email: ${email}<br>
+            Message: ${message}`,
+        }).then(() => {
+          showPopup();
+          setTimeout(hidePopup, 5000);
+          alert("mail sent successfully");
+          console.log("Hello");
+          // contactForm.reset();
+        });
+      };
+      // Convert the FormData object to a JSON object
+
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        checkInputs();
+      });
+    </script> -->
 <Layout>
-  <section class="bg-black w-auto h-auto text-white font-oswald">
-    <div class="grid place-items-center py-10">
+  <section class="bg-black w-auto h-auto text-white font-oswald content">
+    <div class="grid place-items-center py-20 px-10">
       <div>
         <h1 class="font-bold text-3xl mb-2">Contact me</h1>
         <div
-          class="w-full h-full border-white border-solid border-2 rounded py-5">
+          class="lg:w-full h-full border-white border-solid border-2 rounded py-5">
           <form class="form" method="POST" id="contactForm">
-            <div class="font-oswald flex flex-row gap-x-5 px-7">
+            <div
+              class="flex lg:flex-row lg:gap-x-5 px-7 sm:flex-col sp:flex-col">
               <div class="form-control">
                 <label for="firstName">First Name</label>
                 <br />
                 <input
                   type="text"
                   placeholder="First"
-                  class="rounded w-64 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  class="rounded lg:w-64 sm:w-80 sp:w-80 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
                   id="firstName"
                   name="firstName"
                 />
@@ -35,7 +185,7 @@ import { Icon } from "astro-icon";
                 <input
                   type="text"
                   placeholder="Last"
-                  class="rounded border-0 w-64 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  class="rounded border-0 lg:w-64 sm:w-80 sp:w-80 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
                   id="lastName"
                   name="lastName"
                 />
@@ -54,7 +204,7 @@ import { Icon } from "astro-icon";
                 <input
                   type="email"
                   placeholder="Email"
-                  class="rounded border-0 w-105.4 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  class="rounded border-0 lg:w-105 sm:w-80 sp:w-80 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
                   id="email"
                   name="email"
                 />
@@ -71,7 +221,7 @@ import { Icon } from "astro-icon";
                 <input
                   type="tel"
                   placeholder="Phone"
-                  class="rounded border-0 w-105.4 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
+                  class="rounded border-0 lg:w-105 sm:w-80 sp:w-80 pl-2 mt-2 py-0.5 text-black border-red-500 border-solid"
                   id="phone"
                   name="phone"
                 />
@@ -86,7 +236,7 @@ import { Icon } from "astro-icon";
                 <label for="message">Message</label>
                 <br />
                 <textarea
-                  class="rounded border-0 w-105.4 pl-2 mt-2 pt-0.5 pb-4 text-black border-red-500 border-solid"
+                  class="rounded border-0 lg:w-105.4 sm:w-80 sp:w-80 pl-2 mt-2 pt-0.5 pb-4 text-black border-red-500 border-solid"
                   placeholder="Provide your inquiry or feedback"
                   id="message"
                   name="message"></textarea>
@@ -99,7 +249,7 @@ import { Icon } from "astro-icon";
               </div>
               <div class="text-center">
                 <button
-                  class="bg-red-500 border-red-500 border-solid border-2 px-10 py-1 text-white font-normal text-lg rounded"
+                  class="bg-red-500 border-red-500 border-solid border-2 px-10 py-1 text-white font-normal text-lg rounded transition ease-in delay-150 hover:-translate-y-1 hover:scale-110 duration-200"
                   >Submit</button
                 >
               </div>
@@ -255,7 +405,7 @@ import { Icon } from "astro-icon";
         data[key] = value.toString(); // Make sure the value is converted to a string
       });
 
-      const response = await fetch("http://localhost:5000/submit", {
+      const response = await fetch("http://localhost:5000/email/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -269,6 +419,7 @@ import { Icon } from "astro-icon";
         console.log(responseData.message);
         showPopup();
         setTimeout(hidePopup, 5000);
+        form.reset();
       } else {
         console.log("Form submission failed.");
       }
