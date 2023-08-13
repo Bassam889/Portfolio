@@ -2,10 +2,10 @@
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    fontFamily: {
-      oswald: ["Oswald"],
-    },
     extend: {
+      fontFamily: {
+        oswald: ["Oswald"],
+      },
       spacing: {
         1.5: "1.5px",
         px: "1px",

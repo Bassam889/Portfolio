@@ -1,9 +1,4 @@
-@font-face {
-  font-family: "Oswald";
-  src: url("path/to/oswald.woff2") format("woff2"),
-    url("path/to/oswald.woff") format("woff");
-  /* Add additional font formats and sources as needed */
-}
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
 *,
 *::before,
